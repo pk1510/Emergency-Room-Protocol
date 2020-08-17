@@ -1,0 +1,29 @@
+	VoIP is a great alternative over the present telephony system. Here, I designed a small project for an emergency protocol using
+SIP. I used an asterisk server for this purpose. After compiling and installing asterisk and making some modification in the required files.
+I am assuming that all the telephone is connected to a pbx with an ethernet cable and has a sip account. 
+
+Firstly, I create the sip peers for the telephone operators and a manager and for my emergency number 555 in the sip.conf
+then I create the appropriate extensions corresponding to each telephone they would have an access to. In the queues.conf
+i added both of them as the queue members dynamically and changed the strategy to leastrecent which calls the person who has least recently hung up.
+I changed the timeout so that it revists the queue after a very short time.
+
+In sip.conf I added the following statement "qualify = yes" and "canreinvite=no". The former demands the SIP provider to 
+monitor this number so that it sends random packets to keep the NAT alive. We need not do anything with that packet. Its purpose is to ensure whether the connection is alive
+The later ensures that the two telephones does not send a reinvite if they want to communicate for the second time. 
+this ensures that all the calls are made via the asterisk server. 
+
+In the sip peer [555], we used the number instead of name because the SIP provider checks invites for the number.If we 
+create a peer with any other name it does not matches with it and starts looking at the context public. We can modify
+this by invite=insecure to enable the naming but since i am using a single number, it doesnt make any change.
+
+To check whether a dispatcher is logged in our out of the system, we use the asterisk database and the unique id given to each of the operators. It has each of the members of the queue
+as a key under the family Queue.
+
+Initially I created a database via parsing a json which has the location of each branch as a column
+
+	The flow through of this model is: when an outisder calls 555, the dispatcher types the place where it demands an
+emergency service by listening to the outsider. The firstClient script calculates the latitude and longitude of that place
+and sends them to the server. The server then finds out the nearest branch corresponding to that location and sends the location,
+the call details of that call from Master.csv file and the recording of that same call. All of these are done using sockets.
+So there are two sets of clients. One, which does the sending of the location of the place and the branch which takes actions.
+ 

@@ -1,0 +1,216 @@
+{
+  "defintions": [
+    {
+      "name": "branch",
+      "type": "entity",
+      "description": "",
+      "properties": [
+        {
+          "name": "name",
+          "type": "string",
+          "metadata": {
+            "minimumLength": 3,
+            "maximumLength": 25,
+            "nullable": false
+          }
+
+        },
+        {
+          "name": "fullAddress",
+          "type": "string",
+          "metadata": {
+            "minimumLength": 10,
+            "maximumLength": 75,
+            "nullable": false
+          }
+        },
+        {
+          "name": "telephone",
+          "type": "number",
+          "metadata": {
+            "lowerlimit": 100000,
+            "upperlimit": 999999,
+            "nullable": false,
+            "subtype": "integer"
+          }
+        },
+        {
+          "name": "landmark",
+          "type": "string",
+          "metadata": {
+            "minimumLength": 3,
+            "maximumLength": 25,
+            "nullable": false
+          }
+        },
+        {
+          "name": "head",
+          "type": "string",
+          "metadata": {
+            "minimumLength": 3,
+            "maximumLength": 25,
+            "nullable": false
+          }
+        },
+        {
+          "name": "headMobile",
+          "type": "number",
+          "metadata": {
+            "lowerlimit": 100000000,
+            "upperlimit": 999999999,
+            "nullable": false,
+            "subtype": "integer"
+          }
+        },
+        {
+          "name": "emailID",
+          "type": "string",
+          "metadata": {
+            "minimumLength": 10,
+            "maximumLength": 50,
+            "nullable": false
+          }
+        },
+        {
+          "name": "latitude",
+          "type": "number",
+          "metadata": {
+            "lowerlimit": -90,
+            "upperlimit": 90,
+            "nullable": false,
+            "subtype": "float"
+          }
+        },
+        {
+          "name": "longitude",
+          "type": "number",
+          "metadata": {
+            "lowerlimit": -180,
+            "upperlimit": 180,
+            "nullable": false,
+            "subtype": "float"
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "mainControlRoom",
+      "type": "entity",
+      "properties": [
+        {
+          "name": "serverCount",
+          "type": "number",
+          "metadata": {
+            "lowerlimit": 5000,
+            "upperlimit": 50000,
+            "nullable": false,
+            "subtype": "integer"
+          }
+        },
+        {
+          "name": "systemCount",
+          "type": "number",
+          "metadata": {
+            "lowerlimit": 1000,
+            "upperlimit": 10000,
+            "nullable": false,
+            "subtype": "integer"
+          }
+        },
+        {
+          "name": "employeeCount",
+          "type": "number",
+          "metadata": {
+            "lowerlimit": 1000,
+            "upperlimit": 5000,
+            "nullable": false,
+            "subtype": "integer"
+          }
+        },
+        {
+          "name": "head",
+          "type": "string",
+          "metadata": {
+            "minimumLength": 3,
+            "maximumLength": 25,
+            "nullable": false
+          }
+        },
+        {
+          "name": "headMobile",
+          "type": "number",
+          "metadata": {
+            "lowerlimit": 100000000,
+            "upperlimit": 999999999,
+            "nullable": false,
+            "subtype": "integer"
+          }
+        },
+        {
+          "name": "emailID",
+          "type": "string",
+          "metadata": {
+            "minimumLength": 10,
+            "maximumLength": 50,
+            "nullable": false
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "employee",
+      "type": "entity",
+      "properties": [
+        {
+          "name": "fullName",
+          "type": "string",
+          "metadata": {
+            "minimumLength": 3,
+            "maximumLength": 25,
+            "nullable": false
+          }
+        },
+        {
+          "name": "dateOfBirth",
+          "type": "timestamp",
+          "metadata": {
+            "nullable": false
+          }
+        },
+        {
+          "name": "age",
+          "type": "number",
+          "metadata": {
+            "lowerlimit": 18,
+            "upperlimit": 50,
+            "nullable": false,
+            "subtype": "integer",
+            "settable": false,
+            "value": "{{dateTime.utcNow - this.dateOfBirth}}"
+          }
+        },
+        {
+          "name": "designation",
+          "type": "string",
+          "metadata": {
+            "minimumLength": 4,
+            "maximumLength": 12,
+            "nullable": false,
+            "value": ["head", "techTeam", "chairMan", "dataAnalyst", "dispatcher"]
+          }
+        },
+        {
+          "name": "contactDetails",
+          "type": "string",
+          "metadata": {
+            "minimumLength": 10,
+            "maximumLength": 100,
+            "nullable": false
+          }
+        }
+      ]
+    }
+  ]
+}
