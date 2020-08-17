@@ -74,7 +74,7 @@ def service_connection(key, mask):
                         if intranet["user_name"] in words and strcmp(words[11],tym)>=0 : #words[11] gives the timestamp of end call
                             data.outb+=line+"\n"+str(latloc)+","+str(longloc)                     # we ll encode it while sending
                             tym = words[11]                                               # get the new tym for parsing the next data.
-                with os.scandir(r'/Prem/desktop/intranet["user_name"]/') as files:
+                with os.scandir(r'/home/prem/intranet["user_name"]/') as files:
                     for i in range(1,len(files)):
                         if strcmp(files[i],tym) >= 0 and strcmp(files[i-1],tym) < 0:
                             break
