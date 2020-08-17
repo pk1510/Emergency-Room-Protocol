@@ -26,4 +26,6 @@ emergency service by listening to the outsider. The firstClient script calculate
 and sends them to the server. The server then finds out the nearest branch corresponding to that location and sends the location,
 the call details of that call from Master.csv file and the recording of that same call. All of these are done using sockets.
 So there are two sets of clients. One, which does the sending of the location of the place and the branch which takes actions.
+I could not see any contents of asterisk database in /var/lib/asterisk/astdb.sqlite3 so i uploaded a photo. 
+
  
