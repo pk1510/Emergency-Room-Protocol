@@ -22,7 +22,7 @@ def service_connection(key, mask):
         if recv_data:
             size = int(recv_data[:header_size])
             recv_data = recv_data[header_size:]
-            with open(r'/client/callDetails.txt','a') as f:
+            with open(r'/home/prem/client/callDetails.txt','a') as f:
                 f.write(recv_data[:size])
 
     if mask & selectors.EVENT_WRITE:
